@@ -10,7 +10,9 @@ public partial class test : CharacterBody2D
 
 	private Vector2 center;
 	private Interactives interactives;
-
+	
+	private static Node currInteractive = null;
+	
 	public override void _Ready()
 	{
 		center = GetViewportRect().Size / 2;
@@ -45,10 +47,18 @@ public partial class test : CharacterBody2D
 			{
 				velocity.Y = speed;
 			}
+			
 			else
 			{
 				velocity.Y = 0;
 			}
+			if (Input.IsActionJustPressed("interact"))
+			{
+		
+				currInteractive.QueueFree();
+			}
+			
+			
 		}
 		else
 		{
@@ -67,4 +77,14 @@ public partial class test : CharacterBody2D
 	{
 		GlobalPosition = center;
 	}
+	
+	public  void setInteract(Node o){
+		currInteractive = o;
+	}
+		public  void DeclareNotCollide(Node o){
+			if(currInteractive == o)
+				currInteractive = null;
+	}
+	
+	
 }

@@ -6,6 +6,7 @@ public partial class ClosetArea : Area2D
 	 public override void _Ready()
 	{
 		this.BodyEntered += OnBodyEntered;
+		this.BodyExited += OnBodyExited;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,12 +15,27 @@ public partial class ClosetArea : Area2D
 	}
 	private void OnBodyEntered(Node2D body)
 	{
-		GD.Print("1");
-		//var parentSprite = GetParent() as Sprite2D;
-		//if (parentSprite != null)
-		//{
-		//	parentSprite.Modulate = new Color(1, 0, 0);  // tint red
-		//	GD.Print("2");
-		//}
+		
+	if (body is test testInstance)
+	{
+		GD.Print("Collide with player");
+		testInstance.setInteract( GetParent());
 	}
+	else
+	{
+		GD.PrintErr("Passed node is not a Tesr, cannot call CustomAction.");
+	}
+	}
+		private void OnBodyExited(Node2D body)
+	{
+		// Code to execute when a body exits collision with this RigidBody2D
+	if (body is test testInstance)
+	{
+		GD.Print("Stop ollide with player");
+
+		testInstance.DeclareNotCollide( GetParent());
+	}
+	}
+	
+
 }
