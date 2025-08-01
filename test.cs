@@ -1,62 +1,70 @@
 using Godot;
 using System;
 
-public partial class test : Sprite2D
+public partial class test : CharacterBody2D
 {
 	private float speed = 200f;
-
 	private float gravity = 800f;
-	private float jumpForce = -400f; // negative because y+ is down in Godot
-	private float verticalVelocity = 0f;
-
-	private bool isOnGround = true;
+	private float jumpForce = -400f;
+	private Vector2 velocity = Vector2.Zero;
 
 	private Vector2 center;
+	private Interactives interactives;
 
 	public override void _Ready()
 	{
 		center = GetViewportRect().Size / 2;
 		GlobalPosition = center;
+
+		interactives = GetNode<Interactives>("../Interactives");
+		interactives.SignMeUp(this);
 	}
 
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 		float dt = (float)delta;
 
-		// Horizontal movement
+		velocity.X = 0;
+
 		if (Input.IsActionPressed("move_left"))
-			GlobalPosition += new Vector2(-1, 0) * speed * dt;
+			velocity.X = -speed;
+		else if (Input.IsActionPressed("move_right"))
+			velocity.X = speed;
 
-		if (Input.IsActionPressed("move_right"))
-			GlobalPosition += new Vector2(1, 0) * speed * dt;
-
-		// Vertical movement (up/down)
-		if (Input.IsActionPressed("move_up") && isOnGround)
-			GlobalPosition += new Vector2(0, -1) * speed * dt;
-
-		if (Input.IsActionPressed("move_down") && isOnGround)
-			GlobalPosition += new Vector2(0, 1) * speed * dt;
-
-		// Jump input (space key), only if on the ground
-		if (isOnGround && Input.IsActionJustPressed("jump"))
+		if (IsOnFloor())
 		{
-			verticalVelocity = jumpForce;
-			isOnGround = false;
-		}
-
-		// Gravity and vertical jump/fall
-		if (!isOnGround)
-		{
-			verticalVelocity += gravity * dt;
-			GlobalPosition += new Vector2(0, verticalVelocity * dt);
-
-			// Check if sprite landed (back to ground level)
-			if (GlobalPosition.Y >= center.Y)
+			if (Input.IsActionJustPressed("jump"))
 			{
-				GlobalPosition = new Vector2(GlobalPosition.X, center.Y);
-				verticalVelocity = 0f;
-				isOnGround = true;
+				velocity.Y = jumpForce;
+			}
+			else if (Input.IsActionPressed("move_up"))
+			{
+				velocity.Y = -speed;
+			}
+			else if (Input.IsActionPressed("move_down"))
+			{
+				velocity.Y = speed;
+			}
+			else
+			{
+				velocity.Y = 0;
 			}
 		}
+		else
+		{
+			velocity.Y += gravity * dt;
+		}
+
+	Velocity = velocity;
+	MoveAndSlide(); // Godot 4 handles the internal velocity
+	velocity = Velocity;
+
+	if (Input.IsActionJustPressed("escape"))
+		interactives.ResetInteractives();
+	}
+
+	public void Genesis()
+	{
+		GlobalPosition = center;
 	}
 }

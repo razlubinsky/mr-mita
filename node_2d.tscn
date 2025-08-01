@@ -1,11 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjsfsdx6a333v"]
+[gd_scene load_steps=9 format=3 uid="uid://bjsfsdx6a333v"]
 
 [ext_resource type="Texture2D" uid="uid://vi3pwu1mpqq0" path="res://icon.svg" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://44xwy0oqwo7d" path="res://test.cs" id="1_wtcfe"]
+[ext_resource type="Script" uid="uid://dg1wt0wfm3gtd" path="res://Interactives.cs" id="3_epypp"]
+[ext_resource type="Script" uid="uid://bqaaqvk2i36g7" path="res://Closet.cs" id="4_0hol4"]
+[ext_resource type="Texture2D" uid="uid://b4nhxn7lonp21" path="res://1.png" id="4_q6r6c"]
+[ext_resource type="Script" uid="uid://bb6uo1cwpct5g" path="res://ClosetArea.cs" id="6_kdubu"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdubu"]
+size = Vector2(126, 128)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[sub_resource type="CircleShape2D" id="CircleShape2D_q6r6c"]
+radius = 13.3043
+
+[node name="Main" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(7, 3)
-texture = ExtResource("1_0e48y")
 script = ExtResource("1_wtcfe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_kdubu")
+
+[node name="Player" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1_0e48y")
+
+[node name="Interactives" type="Node" parent="."]
+script = ExtResource("3_epypp")
+
+[node name="Closet" type="Sprite2D" parent="."]
+position = Vector2(608, 420)
+scale = Vector2(3.45833, 3.45833)
+texture = ExtResource("4_q6r6c")
+script = ExtResource("4_0hol4")
+
+[node name="ClosetArea" type="Area2D" parent="Closet"]
+script = ExtResource("6_kdubu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Closet/ClosetArea"]
+position = Vector2(0.578305, 19.3735)
+shape = SubResource("CircleShape2D_q6r6c")
+
+[connection signal="body_entered" from="Closet/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
