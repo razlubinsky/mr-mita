@@ -51,7 +51,7 @@ public partial class CharacterBody2d : CharacterBody2D
 		{
 			KinematicCollision2D col = GetSlideCollision(i);
 			Node collider = col.GetCollider() as Node;
-			GD.Print($"Collided with: {collider?.Name}");
+			//GD.Print($"Collided with: {collider?.Name}");
 			// You can inspect normal, position, etc.: col.GetNormal()
 		}
 	}

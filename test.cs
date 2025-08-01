@@ -11,7 +11,7 @@ public partial class test : CharacterBody2D
 	private Vector2 center;
 	private Interactives interactives;
 	
-	private static Node currInteractive = null;
+	private static InterctableAria currInteractive = null;
 	
 	public override void _Ready()
 	{
@@ -55,7 +55,7 @@ public partial class test : CharacterBody2D
 			if (Input.IsActionJustPressed("interact"))
 			{
 		
-				currInteractive.QueueFree();
+				currInteractive.interactWith();
 			}
 			
 			
@@ -78,10 +78,10 @@ public partial class test : CharacterBody2D
 		GlobalPosition = center;
 	}
 	
-	public  void setInteract(Node o){
+	public  void setInteract(InterctableAria o){
 		currInteractive = o;
 	}
-		public  void DeclareNotCollide(Node o){
+		public  void DeclareNotCollide(InterctableAria o){
 			if(currInteractive == o)
 				currInteractive = null;
 	}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bjsfsdx6a333v"]
+[gd_scene load_steps=14 format=4 uid="uid://bjsfsdx6a333v"]
 
 [ext_resource type="Texture2D" uid="uid://vi3pwu1mpqq0" path="res://icon.svg" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://44xwy0oqwo7d" path="res://test.cs" id="1_wtcfe"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bb6uo1cwpct5g" path="res://ClosetArea.cs" id="6_kdubu"]
 [ext_resource type="Texture2D" uid="uid://dnu1jsuh0uakw" path="res://Tile-Sets/Tile-Sets (64-64).png" id="7_d21ai"]
 [ext_resource type="Texture2D" uid="uid://dvdwngtp7u7fc" path="res://2.png" id="8_rj586"]
+[ext_resource type="Script" uid="uid://44ve4k628b6p" path="res://DoorArea.cs" id="9_4d7sh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdubu"]
 size = Vector2(126, 128)
@@ -941,11 +942,14 @@ position = Vector2(0.578305, 19.3735)
 shape = SubResource("CircleShape2D_q6r6c")
 
 [node name="Door" type="Sprite2D" parent="."]
-position = Vector2(370, 205)
+position = Vector2(600, 516)
+scale = Vector2(3.48, 3.48)
 texture = ExtResource("8_rj586")
+offset = Vector2(-5, -26)
 
 [node name="ClosetArea" type="Area2D" parent="Door"]
-script = ExtResource("6_kdubu")
+position = Vector2(-5.45977, -25.5747)
+script = ExtResource("9_4d7sh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/ClosetArea"]
 position = Vector2(0.578305, 19.3735)

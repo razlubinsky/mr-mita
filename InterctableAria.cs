@@ -3,7 +3,7 @@ using System;
 
 public  abstract partial class InterctableAria : Area2D
 {
-	
+	public abstract void   interactWith();
 		 public override void _Ready()
 	{
 		this.BodyEntered += OnBodyEntered;
@@ -18,8 +18,8 @@ public  abstract partial class InterctableAria : Area2D
 		
 	if (body is test testInstance)
 	{
-		GD.Print("Collide with player");
-		testInstance.setInteract( GetParent());
+		//GD.Print("Collide with player");
+		testInstance.setInteract( this);
 	}
 	else
 	{
@@ -30,9 +30,12 @@ public  abstract partial class InterctableAria : Area2D
 	{
 	if (body is test testInstance)
 	{
-		GD.Print("Stop ollide with player");
+		//GD.Print("Stop ollide with player");
 
-		testInstance.DeclareNotCollide( GetParent());
+		testInstance.DeclareNotCollide(this);
 	}
 	}
+	
+	
+	
 }
