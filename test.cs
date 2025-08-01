@@ -55,7 +55,7 @@ public partial class test : CharacterBody2D
 			if (Input.IsActionJustPressed("interact"))
 			{
 		
-				currInteractive.QueueFree();
+				currInteractive?.QueueFree();
 			}
 			
 			
