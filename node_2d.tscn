@@ -908,29 +908,35 @@ scale = Vector2(2.4, 2.4)
 tile_map_data = PackedByteArray("AAAEAAsAAQABAAYAAAAEAAwAAQABAAYAAAAFAAwAAQABAAYAAAAFAA0AAQABAAYAAAAGAA0AAQABAAYAAAAHAA0AAQABAAYAAAAIAA0AAQABAAYAAAAJAA0AAQABAAYAAAAKAA0AAQABAAYAAAAKAA4AAQABAAYAAAALAA4AAQABAAYAAAAMAA4AAQABAAYAAAANAA4AAQABAAYAAAAOAA4AAQABAAYAAAAOAA8AAQABAAYAAAAPAA8AAQABAAYAAAAQAA8AAQABAAYAAAARAA8AAQABAAYAAAASAA8AAQABAAYAAAATAA8AAQABAAYAAAAUAA8AAQABAAYAAAAVAA8AAQABAAYAAAAVAA4AAQABAAYAAAAWAA4AAQABAAYAAAAXAA4AAQABAAYAAAAXAA0AAQABAAYAAAAXAAwAAQABAAYAAAAYAAwAAQABAAYAAAAZAAsAAQABAAYAAAA=")
 tile_set = SubResource("TileSet_4d7sh")
 
-[node name="Closet" type="Sprite2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
 position = Vector2(872, 420)
 scale = Vector2(3.45833, 3.45833)
-texture = ExtResource("4_q6r6c")
 script = ExtResource("4_0hol4")
 
-[node name="ClosetArea" type="Area2D" parent="Closet"]
+[node name="Closet" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("4_q6r6c")
+
+[node name="ClosetArea" type="Area2D" parent="Node2D"]
 script = ExtResource("6_kdubu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Closet/ClosetArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/ClosetArea"]
 position = Vector2(0.578305, 19.3735)
 shape = SubResource("CircleShape2D_q6r6c")
 
-[node name="Closet2" type="Sprite2D" parent="."]
-position = Vector2(356, 372)
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(872, 420)
 scale = Vector2(3.45833, 3.45833)
-texture = ExtResource("4_q6r6c")
 script = ExtResource("4_0hol4")
 
-[node name="ClosetArea" type="Area2D" parent="Closet2"]
+[node name="Closet2" type="Sprite2D" parent="Node2D2"]
+position = Vector2(-149.205, -13.8795)
+texture = ExtResource("4_q6r6c")
+
+[node name="ClosetArea" type="Area2D" parent="Node2D2"]
+position = Vector2(-149.205, -13.8795)
 script = ExtResource("6_kdubu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Closet2/ClosetArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/ClosetArea"]
 position = Vector2(0.578305, 19.3735)
 shape = SubResource("CircleShape2D_q6r6c")
 
@@ -945,6 +951,6 @@ script = ExtResource("6_kdubu")
 position = Vector2(0.578305, 19.3735)
 shape = SubResource("CircleShape2D_q6r6c")
 
-[connection signal="body_entered" from="Closet/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
-[connection signal="body_entered" from="Closet2/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
+[connection signal="body_entered" from="Node2D/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
+[connection signal="body_entered" from="Node2D2/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
 [connection signal="body_entered" from="Door/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]

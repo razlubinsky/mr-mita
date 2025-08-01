@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Closet : Sprite2D
+public partial class Closet : Node2D
 {
 	private Sprite2D sprite;
 	private Vector2 originalPosition;
