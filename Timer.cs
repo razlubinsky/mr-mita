@@ -4,7 +4,8 @@ using System;
 public partial class Timer : Node2D
 {
 	[Export] public Label TimerLabel; // Optional: Assign in editor
-	[Export] public int StartMinutes = 1;
+	[Export] public int StartMinutes = 0;
+	[Export] public int StartSeconds = 10;
 
 	private float timeLeft;
 	private bool isRunning = false;
@@ -58,7 +59,7 @@ public partial class Timer : Node2D
 
 	public void ResetTimer()
 	{
-		timeLeft = StartMinutes * 60;
+		timeLeft = StartMinutes * 60 + StartSeconds;
 		isRunning = true;
 		UpdateLabel();
 	}
