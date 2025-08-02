@@ -43,6 +43,7 @@ load_path = "res://.godot/imported/Tile-Sets (64-64).png-ecead5e0f41bad324d25a25
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d21ai"]
 texture = SubResource("CompressedTexture2D_4d7sh")
+use_texture_padding = false
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
