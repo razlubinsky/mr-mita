@@ -7,6 +7,7 @@ public partial class Key : InterctableAria
 	private OpenDoorManager openDoorManager;
 	public override void _Ready()
 	{
+		base._Ready();
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_animatedSprite.Play("Spin");
 	}

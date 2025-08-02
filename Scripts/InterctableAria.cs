@@ -23,7 +23,7 @@ public  abstract partial class InterctableAria : Area2D
 	}
 	else
 	{
-		GD.PrintErr("Passed node is not a Tesr, cannot call CustomAction.");
+		GD.PrintErr("Passed node is not a Player, cannot call CustomAction.");
 	}
 	}
 		private void OnBodyExited(Node2D body)
