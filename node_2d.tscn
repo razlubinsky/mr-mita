@@ -898,6 +898,9 @@ sources/1 = SubResource("TileSetAtlasSource_d21ai")
 [sub_resource type="CircleShape2D" id="CircleShape2D_q6r6c"]
 radius = 13.3043
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4d7sh"]
+size = Vector2(70.6897, 90.5172)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjha6"]
 atlas = ExtResource("8_4d7sh")
 region = Rect2(0, 0, 78, 96)
@@ -917,7 +920,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("11_fs4d3")
 }],
-"loop": true,
+"loop": false,
 "name": &"Close",
 "speed": 5.0
 }, {
@@ -942,13 +945,10 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("16_2nhjh")
 }],
-"loop": true,
-"name": &"open",
+"loop": false,
+"name": &"Open",
 "speed": 10.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4d7sh"]
-size = Vector2(70.6897, 90.5172)
 
 [node name="Main" type="Node2D"]
 
@@ -1033,22 +1033,22 @@ vertical_alignment = 1
 
 [node name="Node2D" type="Node2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
-position = Vector2(602.5, 400.5)
-scale = Vector2(3.08974, 3.26042)
-sprite_frames = SubResource("SpriteFrames_gt76g")
-animation = &"Idle"
-
-[node name="ClosetArea" type="Area2D" parent="Node2D"]
+[node name="DoorArea" type="Area2D" parent="Node2D"]
 position = Vector2(598, 344)
 scale = Vector2(3.48, 3.48)
 script = ExtResource("9_4d7sh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/ClosetArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/DoorArea"]
 position = Vector2(0, 15.0862)
 shape = SubResource("RectangleShape2D_4d7sh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/DoorArea"]
+position = Vector2(1.29311, 16.2356)
+scale = Vector2(0.887856, 0.936902)
+sprite_frames = SubResource("SpriteFrames_gt76g")
+animation = &"Close"
 
 [connection signal="body_entered" from="Closet/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
 [connection signal="body_entered" from="Safe/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
 [connection signal="body_entered" from="Closet2/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
-[connection signal="body_entered" from="Node2D/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
+[connection signal="body_entered" from="Node2D/DoorArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
