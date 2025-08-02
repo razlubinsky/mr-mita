@@ -52,7 +52,8 @@ public partial class Timer : Node2D
 	private void OnTimerFinished()
 	{
 		ResetTimer();
-		interactives.ResetInteractives();
+		GetTree().ReloadCurrentScene();
+		//interactives.ResetInteractives();
 		GD.Print("Timer Finished!");
 		// Call any custom logic here
 	}
