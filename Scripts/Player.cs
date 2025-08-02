@@ -79,8 +79,13 @@ public partial class Player : CharacterBody2D
 				_animatedSprite.Play("idel");
 
 				velocity.Y = 0;
-			}
-			if (Input.IsActionJustPressed("interact"))
+			}			
+		}
+		else
+		{
+			velocity.Y += gravity * dt;
+		}
+		if (Input.IsActionJustPressed("interact"))
 			{
 				if (currInteractive != null && currInteractive.Count != 0)
 				{
@@ -89,23 +94,11 @@ public partial class Player : CharacterBody2D
 				
 				InterctableAria inreract = currInteractive[0];
 				inreract.interactWith();
-				//if(InterctableAria != null){
-					//currInteractive.RemoveAt(0);
-				//}
-				if (currInteractive.Remove(inreract))
-					currInteractive.Add(inreract);
 
-				
-					
+				if (currInteractive.Remove(inreract))
+					currInteractive.Add(inreract);	
 				}
 			}
-			
-			
-		}
-		else
-		{
-			velocity.Y += gravity * dt;
-		}
 
 	Velocity = velocity;
 	MoveAndSlide(); // Godot 4 handles the internal velocity
