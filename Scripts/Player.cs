@@ -85,8 +85,17 @@ public partial class Player : CharacterBody2D
 				if (currInteractive != null && currInteractive.Count != 0)
 				{
 					//currInteractive.interactWith();
-				currInteractive[0].interactWith();
-				//currInteractive.RemoveAt(0);
+					
+				
+				InterctableAria inreract = currInteractive[0];
+				inreract.interactWith();
+				//if(InterctableAria != null){
+					//currInteractive.RemoveAt(0);
+				//}
+				if (currInteractive.Remove(inreract))
+					currInteractive.Add(inreract);
+
+				
 					
 				}
 			}
