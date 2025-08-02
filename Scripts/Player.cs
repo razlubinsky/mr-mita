@@ -9,6 +9,7 @@ public partial class Player : CharacterBody2D
 	private float gravity = 800f;
 	private float jumpForce = -400f;
 	private Vector2 velocity = Vector2.Zero;
+	private AudioStreamPlayer2D jumpfx;
 
 	private Vector2 center;
 	private Interactives interactives;
@@ -30,6 +31,7 @@ public partial class Player : CharacterBody2D
 		interactives.SignMeUp(this);
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		currInteractive = new List<InterctableAria>();
+		jumpfx = GetNode<AudioStreamPlayer2D>("jumpSEF");
 
 
 
@@ -64,6 +66,7 @@ public partial class Player : CharacterBody2D
 			if (Input.IsActionJustPressed("jump"))
 			{
 				_animatedSprite.Play("jump");
+				jumpfx.Play();
 				idel = false;
 				velocity.Y = jumpForce;
 			}

@@ -8,6 +8,7 @@ public partial class DoorArea : InterctableAria
 	private Vector2 velocity = Vector2.Zero;
 	private float jumpForce = -400f;
 	private AnimatedSprite2D _animatedSprite;
+	private AudioStreamPlayer2D doorfx;
 
 	
 	// Called when the node enters the scene tree for the first time.
@@ -16,6 +17,7 @@ public partial class DoorArea : InterctableAria
 		base._Ready();
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_animatedSprite.Play("Idle");
+		doorfx = GetNode<AudioStreamPlayer2D>("DoorSEF");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,7 +41,9 @@ public partial class DoorArea : InterctableAria
 				_animatedSprite.Stop();
 				_animatedSprite.Play("Open");
 				isOpen = true;	
+				doorfx.Play();	
 			}
-		}			
+		}		
+		
 	}
 }

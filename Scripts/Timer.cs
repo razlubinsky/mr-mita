@@ -5,7 +5,7 @@ public partial class Timer : Node2D
 {
 	[Export] public Label TimerLabel; // Optional: Assign in editor
 	[Export] public int StartMinutes = 0;
-	[Export] public int StartSeconds = 10;
+	[Export] public int StartSeconds = 15;
 
 	private float timeLeft;
 	private bool isRunning = false;
@@ -14,7 +14,7 @@ public partial class Timer : Node2D
 	public override void _Ready()
 	{
 		ResetTimer(); // Start immediately or call it manually
-		interactives = GetNode<Interactives>("../../Interactives");
+		interactives = GetNode<Interactives>("../Interactives");
 	}
 
 	public override void _Process(double delta)
