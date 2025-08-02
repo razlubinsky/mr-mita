@@ -14,7 +14,7 @@ public partial class Timer : Node2D
 	public override void _Ready()
 	{
 		ResetTimer(); // Start immediately or call it manually
-		interactives = GetNode<Interactives>("../Interactives");
+		interactives = GetNode<Interactives>("../../Interactives");
 	}
 
 	public override void _Process(double delta)

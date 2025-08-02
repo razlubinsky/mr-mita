@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://bjsfsdx6a333v"]
+[gd_scene load_steps=54 format=4 uid="uid://b51pkqsa8o6wj"]
 
 [ext_resource type="Script" uid="uid://dg1wt0wfm3gtd" path="res://Scripts/Interactives.cs" id="1_5qmjy"]
 [ext_resource type="Script" uid="uid://bqaaqvk2i36g7" path="res://Scripts/Closet.cs" id="2_qmhe8"]
@@ -1077,7 +1077,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Main" type="Node2D"]
+[node name="Main2" type="Node2D"]
 
 [node name="Interactives" type="Node" parent="."]
 script = ExtResource("1_5qmjy")

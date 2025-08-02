@@ -26,7 +26,7 @@ public partial class Player : CharacterBody2D
 		center = GetViewportRect().Size / 2;
 		GlobalPosition = center;
 
-		interactives = GetNode<Interactives>("../Interactives");
+		interactives = GetNode<Interactives>("../../Interactives");
 		interactives.SignMeUp(this);
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		currInteractive = new List<InterctableAria>();
