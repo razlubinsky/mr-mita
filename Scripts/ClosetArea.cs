@@ -17,7 +17,7 @@ public partial class ClosetArea : InterctableAria // Area2D
 	//private void OnBodyEntered(Node2D body)
 	//{
 		//
-	//if (body is test testInstance)
+	//if (body is Player testInstance)
 	//{
 		//GD.Print("Collide with player");
 		//testInstance.setInteract( GetParent());
@@ -30,7 +30,7 @@ public partial class ClosetArea : InterctableAria // Area2D
 		//private void OnBodyExited(Node2D body)
 	//{
 		//// Code to execute when a body exits collision with this RigidBody2D
-	//if (body is test testInstance)
+	//if (body is Player testInstance)
 	//{
 		//GD.Print("Stop ollide with player");
 //
