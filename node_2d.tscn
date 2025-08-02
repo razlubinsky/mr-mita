@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://bjsfsdx6a333v"]
+[gd_scene load_steps=15 format=4 uid="uid://bjsfsdx6a333v"]
 
 [ext_resource type="Texture2D" uid="uid://vi3pwu1mpqq0" path="res://icon.svg" id="1_0e48y"]
+[ext_resource type="Script" uid="uid://dcxhbro2j4ndu" path="res://Timer.cs" id="1_ir8iy"]
 [ext_resource type="Script" uid="uid://44xwy0oqwo7d" path="res://test.cs" id="1_wtcfe"]
 [ext_resource type="Script" uid="uid://dg1wt0wfm3gtd" path="res://Interactives.cs" id="3_epypp"]
 [ext_resource type="Script" uid="uid://bqaaqvk2i36g7" path="res://Closet.cs" id="4_0hol4"]
@@ -909,35 +910,35 @@ scale = Vector2(2.4, 2.4)
 tile_map_data = PackedByteArray("AAAEAAsAAQABAAYAAAAEAAwAAQABAAYAAAAFAAwAAQABAAYAAAAFAA0AAQABAAYAAAAGAA0AAQABAAYAAAAHAA0AAQABAAYAAAAIAA0AAQABAAYAAAAJAA0AAQABAAYAAAAKAA0AAQABAAYAAAAKAA4AAQABAAYAAAALAA4AAQABAAYAAAAMAA4AAQABAAYAAAANAA4AAQABAAYAAAAOAA4AAQABAAYAAAAOAA8AAQABAAYAAAAPAA8AAQABAAYAAAAQAA8AAQABAAYAAAARAA8AAQABAAYAAAASAA8AAQABAAYAAAATAA8AAQABAAYAAAAUAA8AAQABAAYAAAAVAA8AAQABAAYAAAAVAA4AAQABAAYAAAAWAA4AAQABAAYAAAAXAA4AAQABAAYAAAAXAA0AAQABAAYAAAAXAAwAAQABAAYAAAAYAAwAAQABAAYAAAAZAAsAAQABAAYAAAA=")
 tile_set = SubResource("TileSet_4d7sh")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Closet" type="Node2D" parent="."]
 position = Vector2(872, 420)
 scale = Vector2(3.45833, 3.45833)
 script = ExtResource("4_0hol4")
 
-[node name="Closet" type="Sprite2D" parent="Node2D"]
+[node name="Closet" type="Sprite2D" parent="Closet"]
 texture = ExtResource("4_q6r6c")
 
-[node name="ClosetArea" type="Area2D" parent="Node2D"]
+[node name="ClosetArea" type="Area2D" parent="Closet"]
 script = ExtResource("6_kdubu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/ClosetArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Closet/ClosetArea"]
 position = Vector2(0.578305, 19.3735)
 shape = SubResource("CircleShape2D_q6r6c")
 
-[node name="Node2D2" type="Node2D" parent="."]
+[node name="Safe" type="Node2D" parent="."]
 position = Vector2(872, 420)
 scale = Vector2(3.45833, 3.45833)
 script = ExtResource("4_0hol4")
 
-[node name="Closet2" type="Sprite2D" parent="Node2D2"]
+[node name="Closet2" type="Sprite2D" parent="Safe"]
 position = Vector2(-149.205, -13.8795)
 texture = ExtResource("4_q6r6c")
 
-[node name="ClosetArea" type="Area2D" parent="Node2D2"]
+[node name="ClosetArea" type="Area2D" parent="Safe"]
 position = Vector2(-149.205, -13.8795)
 script = ExtResource("6_kdubu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/ClosetArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Safe/ClosetArea"]
 position = Vector2(0.578305, 19.3735)
 shape = SubResource("CircleShape2D_q6r6c")
 
@@ -955,6 +956,16 @@ script = ExtResource("9_4d7sh")
 position = Vector2(0.578305, 19.3735)
 shape = SubResource("CircleShape2D_q6r6c")
 
-[connection signal="body_entered" from="Node2D/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
-[connection signal="body_entered" from="Node2D2/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
+[node name="Clock" type="Node2D" parent="." node_paths=PackedStringArray("TimerLabel")]
+script = ExtResource("1_ir8iy")
+TimerLabel = NodePath("Label")
+
+[node name="Label" type="Label" parent="Clock"]
+offset_right = 1147.0
+offset_bottom = 151.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Closet/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
+[connection signal="body_entered" from="Safe/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
 [connection signal="body_entered" from="Door/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
