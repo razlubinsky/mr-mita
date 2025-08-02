@@ -14,7 +14,7 @@ public partial class MusicManager : Node
 		else
 		{
 			_instance = this;
-			GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play();
+			GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D").Play();
 			GetTree().Root.AddChild(this); // Move to root to persist
 			this.Owner = null;
 		}

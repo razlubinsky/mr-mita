@@ -33,6 +33,7 @@ public partial class DoorArea : InterctableAria
 		}
 		else
 		{
+			GD.Print("door is oppning");
 			_animatedSprite.Stop();
 			_animatedSprite.Play("Open");
 			isOpen = true;

@@ -82,11 +82,11 @@ public partial class Player : CharacterBody2D
 			}
 			if (Input.IsActionJustPressed("interact"))
 			{
-				if (currInteractive != null)
+				if (currInteractive != null && currInteractive.Count != 0)
 				{
 					//currInteractive.interactWith();
 				currInteractive[0].interactWith();
-				currInteractive.RemoveAt(0);
+				//currInteractive.RemoveAt(0);
 					
 				}
 			}
