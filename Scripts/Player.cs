@@ -12,6 +12,8 @@ public partial class Player : CharacterBody2D
 	private Interactives interactives;
 	
 	private static InterctableAria currInteractive = null;
+	private AnimatedSprite2D _animatedSprite;
+
 	
 	public override void _Ready()
 	{
@@ -20,6 +22,8 @@ public partial class Player : CharacterBody2D
 
 		interactives = GetNode<Interactives>("../Interactives");
 		interactives.SignMeUp(this);
+		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -28,19 +32,32 @@ public partial class Player : CharacterBody2D
 
 		velocity.X = 0;
 
-		if (Input.IsActionPressed("move_left"))
+		if (Input.IsActionPressed("move_left")){
+			 _animatedSprite.FlipH = false;
+
+			_animatedSprite.Play("run");
 			velocity.X = -speed;
-		else if (Input.IsActionPressed("move_right"))
+
+		}
+		else if (Input.IsActionPressed("move_right")){
+					_animatedSprite.FlipH = true;
+
+			_animatedSprite.Play("run");
 			velocity.X = speed;
+
+		}
 
 		if (IsOnFloor())
 		{
 			if (Input.IsActionJustPressed("jump"))
 			{
+				_animatedSprite.Play("jump");
+
 				velocity.Y = jumpForce;
 			}
 			else if (Input.IsActionPressed("move_up"))
 			{
+				
 				velocity.Y = -speed;
 			}
 			else if (Input.IsActionPressed("move_down"))
@@ -50,6 +67,8 @@ public partial class Player : CharacterBody2D
 			
 			else
 			{
+				_animatedSprite.Play("idel");
+
 				velocity.Y = 0;
 			}
 			if (Input.IsActionJustPressed("interact"))
