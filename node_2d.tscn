@@ -38,87 +38,6 @@
 [ext_resource type="Texture2D" uid="uid://b78ab1sn4c7hi" path="res://assets/Character-20250802T081038Z-1-001/Character/Cucumber/2-Run/7.png" id="21_b8fb0"]
 [ext_resource type="Texture2D" uid="uid://cnvduxfh1n5cc" path="res://assets/Character-20250802T081038Z-1-001/Character/Cucumber/2-Run/8.png" id="22_ma08v"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6ip5v"]
-radius = 8.8211
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_s32dh"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_6ip5v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_q5dlx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_c4wnb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_7plk7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_fbwgr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_7mj2a")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_fshgd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_lbrxf")
-}],
-"loop": true,
-"name": &"idel",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_xjt7e")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_0xo8l")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_xfyss")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_3ngjr")
-}],
-"loop": true,
-"name": &"jump",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_qilgh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_4qosj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_cjlbh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_kfelt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_ytlpd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_2v765")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_b8fb0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_ma08v")
-}],
-"loop": true,
-"name": &"run",
-"speed": 5.0
-}]
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4d7sh"]
 load_path = "res://.godot/imported/Tile-Sets (64-64).png-ecead5e0f41bad324d25a25d80b512fc.ctex"
 
@@ -1048,25 +967,88 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ip5v"]
+radius = 8.8211
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s32dh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6ip5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q5dlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_c4wnb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7plk7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fbwgr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7mj2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fshgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lbrxf")
+}],
+"loop": true,
+"name": &"idel",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_xjt7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0xo8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_xfyss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3ngjr")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_qilgh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_4qosj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_cjlbh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_kfelt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ytlpd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_2v765")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_b8fb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ma08v")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
 [node name="Main" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(7, 3)
-scale = Vector2(1.6, 1.6)
-script = ExtResource("1_wtcfe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(1.875, 1.875)
-scale = Vector2(2.19649, 4.11489)
-shape = SubResource("CircleShape2D_6ip5v")
-
-[node name="Player" type="Sprite2D" parent="CharacterBody2D"]
-visible = false
-texture = ExtResource("1_0e48y")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-sprite_frames = SubResource("SpriteFrames_s32dh")
-animation = &"jump"
 
 [node name="Interactives" type="Node" parent="."]
 script = ExtResource("3_epypp")
@@ -1152,6 +1134,24 @@ position = Vector2(1.29311, 16.2356)
 scale = Vector2(0.887856, 0.936902)
 sprite_frames = SubResource("SpriteFrames_gt76g")
 animation = &"Close"
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(7, 3)
+scale = Vector2(1.6, 1.6)
+script = ExtResource("1_wtcfe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(1.875, 1.875)
+scale = Vector2(2.19649, 4.11489)
+shape = SubResource("CircleShape2D_6ip5v")
+
+[node name="Player" type="Sprite2D" parent="CharacterBody2D"]
+visible = false
+texture = ExtResource("1_0e48y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_s32dh")
+animation = &"jump"
 
 [connection signal="body_entered" from="Closet/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
 [connection signal="body_entered" from="Safe/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
