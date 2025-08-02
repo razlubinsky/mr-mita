@@ -1,7 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-public partial class test : CharacterBody2D
+public partial class Player : CharacterBody2D
 {
 	private float speed = 200f;
 	private float gravity = 800f;

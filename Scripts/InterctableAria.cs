@@ -16,7 +16,7 @@ public  abstract partial class InterctableAria : Area2D
 	private void OnBodyEntered(Node2D body)
 	{
 		
-	if (body is test testInstance)
+	if (body is Player testInstance)
 	{
 		//GD.Print("Collide with player");
 		testInstance.setInteract( this);
@@ -28,7 +28,7 @@ public  abstract partial class InterctableAria : Area2D
 	}
 		private void OnBodyExited(Node2D body)
 	{
-	if (body is test testInstance)
+	if (body is Player testInstance)
 	{
 		//GD.Print("Stop ollide with player");
 

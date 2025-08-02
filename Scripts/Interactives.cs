@@ -21,7 +21,7 @@ public partial class Interactives : Node
 	}
 	public void ResetInteractives()
 	{
-		foreach (test interactive in interactivesList)
+		foreach (Player interactive in interactivesList)
 		{
 			interactive.Genesis();
 		}
