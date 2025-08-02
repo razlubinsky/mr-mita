@@ -38,13 +38,14 @@ public partial class Player : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		float dt = (float)delta;
-
+		bool idel = true;
 		velocity.X = 0;
 
 		if (Input.IsActionPressed("move_left")){
 			 _animatedSprite.FlipH = false;
 
 			_animatedSprite.Play("run");
+			idel = false;
 			velocity.X = -speed;
 
 		}
@@ -52,16 +53,18 @@ public partial class Player : CharacterBody2D
 					_animatedSprite.FlipH = true;
 
 			_animatedSprite.Play("run");
+			idel = false;
 			velocity.X = speed;
 
 		}
+
 
 		if (IsOnFloor())
 		{
 			if (Input.IsActionJustPressed("jump"))
 			{
 				_animatedSprite.Play("jump");
-
+				idel = false;
 				velocity.Y = jumpForce;
 			}
 			else if (Input.IsActionPressed("move_up"))
@@ -76,8 +79,8 @@ public partial class Player : CharacterBody2D
 			
 			else
 			{
+			if(idel)
 				_animatedSprite.Play("idel");
-
 				velocity.Y = 0;
 			}			
 		}
@@ -106,6 +109,7 @@ public partial class Player : CharacterBody2D
 
 	if (Input.IsActionJustPressed("escape"))
 		interactives.ResetInteractives();
+
 	}
 
 	public void Genesis()
