@@ -785,6 +785,29 @@ sources/1 = SubResource("TileSetAtlasSource_d21ai")
 [sub_resource type="CircleShape2D" id="CircleShape2D_q6r6c"]
 radius = 13.3043
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfyss"]
+size = Vector2(19.9878, 26.9275)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ngjr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_fshgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_lbrxf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_xjt7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_0xo8l")
+}],
+"loop": true,
+"name": &"interact",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4d7sh"]
 size = Vector2(70.6897, 90.5172)
 
@@ -835,29 +858,6 @@ animations = [{
 "loop": false,
 "name": &"Open",
 "speed": 10.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfyss"]
-size = Vector2(19.9878, 26.9275)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3ngjr"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("17_fshgd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_lbrxf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_xjt7e")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_0xo8l")
-}],
-"loop": true,
-"name": &"interact",
-"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfelt"]
@@ -1052,23 +1052,6 @@ text = "00:01:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Door" type="Node2D" parent="Objects"]
-
-[node name="DoorArea" type="Area2D" parent="Objects/Door"]
-position = Vector2(598, 344)
-scale = Vector2(3.48, 3.48)
-script = ExtResource("9_4d7sh")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Door/DoorArea"]
-position = Vector2(0, 15.0862)
-shape = SubResource("RectangleShape2D_4d7sh")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objects/Door/DoorArea"]
-position = Vector2(1.29311, 16.2356)
-scale = Vector2(0.887856, 0.936902)
-sprite_frames = SubResource("SpriteFrames_gt76g")
-animation = &"Close"
-
 [node name="Box5" type="Node2D" parent="Objects"]
 position = Vector2(538, 459)
 scale = Vector2(2, 2)
@@ -1120,36 +1103,6 @@ position = Vector2(17.1196, 44.2935)
 sprite_frames = SubResource("SpriteFrames_3ngjr")
 animation = &"interact"
 
-[node name="Key" type="Node2D" parent="Objects"]
-position = Vector2(-368, 497)
-scale = Vector2(5, 5)
-
-[node name="Area2D" type="Area2D" parent="Objects/Key"]
-script = ExtResource("2_cjlbh")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Key/Area2D"]
-position = Vector2(-0.199997, -0.199997)
-shape = SubResource("RectangleShape2D_kfelt")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objects/Key/Area2D"]
-sprite_frames = SubResource("SpriteFrames_4qosj")
-animation = &"Spin"
-
-[node name="Box2" type="Node2D" parent="Objects"]
-position = Vector2(-689, 456)
-scale = Vector2(7, 7)
-
-[node name="BoxArea" type="Area2D" parent="Objects/Box2"]
-script = ExtResource("16_7mj2a")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Box2/BoxArea"]
-scale = Vector2(1.30594, 0.850817)
-shape = SubResource("RectangleShape2D_xfyss")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objects/Box2/BoxArea"]
-sprite_frames = SubResource("SpriteFrames_3ngjr")
-animation = &"interact"
-
 [node name="Box" type="Node2D" parent="Objects"]
 position = Vector2(-243, 239)
 scale = Vector2(6, 6)
@@ -1164,6 +1117,56 @@ shape = SubResource("RectangleShape2D_xfyss")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objects/Box/BoxArea"]
 position = Vector2(17.1196, 44.2935)
+sprite_frames = SubResource("SpriteFrames_3ngjr")
+animation = &"interact"
+
+[node name="OpenDoorManager" type="Node2D" parent="Objects"]
+script = ExtResource("52_kfelt")
+
+[node name="Door" type="Node2D" parent="Objects/OpenDoorManager"]
+
+[node name="DoorArea" type="Area2D" parent="Objects/OpenDoorManager/Door"]
+position = Vector2(598, 344)
+scale = Vector2(3.48, 3.48)
+script = ExtResource("9_4d7sh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/OpenDoorManager/Door/DoorArea"]
+position = Vector2(0, 15.0862)
+shape = SubResource("RectangleShape2D_4d7sh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objects/OpenDoorManager/Door/DoorArea"]
+position = Vector2(1.29311, 16.2356)
+scale = Vector2(0.887856, 0.936902)
+sprite_frames = SubResource("SpriteFrames_gt76g")
+animation = &"Close"
+
+[node name="Key" type="Node2D" parent="Objects/OpenDoorManager"]
+position = Vector2(-368, 497)
+scale = Vector2(5, 5)
+
+[node name="Area2D" type="Area2D" parent="Objects/OpenDoorManager/Key"]
+script = ExtResource("2_cjlbh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/OpenDoorManager/Key/Area2D"]
+position = Vector2(-0.199997, -0.199997)
+shape = SubResource("RectangleShape2D_kfelt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objects/OpenDoorManager/Key/Area2D"]
+sprite_frames = SubResource("SpriteFrames_4qosj")
+animation = &"Spin"
+
+[node name="Box2" type="Node2D" parent="Objects"]
+position = Vector2(-370, 486)
+scale = Vector2(7, 7)
+
+[node name="BoxArea" type="Area2D" parent="Objects/Box2"]
+script = ExtResource("16_7mj2a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Box2/BoxArea"]
+scale = Vector2(1.30594, 0.850817)
+shape = SubResource("RectangleShape2D_xfyss")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objects/Box2/BoxArea"]
 sprite_frames = SubResource("SpriteFrames_3ngjr")
 animation = &"interact"
 
@@ -1192,9 +1195,6 @@ limit_right = 2500
 limit_bottom = 650
 editor_draw_limits = true
 
-[node name="OpenDoorManager" type="Node2D" parent="."]
-script = ExtResource("52_kfelt")
-
 [node name="TileMapLayerPlatforms" type="TileMapLayer" parent="."]
 position = Vector2(36, 35)
 scale = Vector2(2.4, 2.4)
@@ -1204,4 +1204,4 @@ tile_set = SubResource("TileSet_4d7sh")
 [connection signal="body_entered" from="Objects/Closet/ClosetArea" to="Objects/CharacterBody2D" method="_on_closet_area_body_entered"]
 [connection signal="body_entered" from="Objects/Safe/ClosetArea" to="Objects/CharacterBody2D" method="_on_closet_area_body_entered"]
 [connection signal="body_entered" from="Objects/Closet2/ClosetArea" to="Objects/CharacterBody2D" method="_on_closet_area_body_entered"]
-[connection signal="body_entered" from="Objects/Door/DoorArea" to="Objects/CharacterBody2D" method="_on_closet_area_body_entered"]
+[connection signal="body_entered" from="Objects/OpenDoorManager/Door/DoorArea" to="Objects/CharacterBody2D" method="_on_closet_area_body_entered"]

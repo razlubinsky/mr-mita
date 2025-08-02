@@ -13,6 +13,8 @@ public partial class Key : InterctableAria
 	}
 	public override void interactWith()
 	{
+		var openDoorManager = GetParent().GetParent() as OpenDoorManager;
+		openDoorManager.GotTheKey();
 		DestroyKey();
 	}
 	private void DestroyKey()
