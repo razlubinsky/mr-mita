@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+using System.Collections.Generic;
 public partial class test : CharacterBody2D
 {
 	private float speed = 200f;
@@ -11,8 +11,8 @@ public partial class test : CharacterBody2D
 	private Vector2 center;
 	private Interactives interactives;
 	
-	private static InterctableAria currInteractive = null;
-	
+	//private static InterctableAria currInteractive = null;
+	private static List<InterctableAria> currInteractive;
 	public override void _Ready()
 	{
 		center = GetViewportRect().Size / 2;
@@ -20,6 +20,7 @@ public partial class test : CharacterBody2D
 
 		interactives = GetNode<Interactives>("../Interactives");
 		interactives.SignMeUp(this);
+		currInteractive = new List<InterctableAria>();
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -55,7 +56,9 @@ public partial class test : CharacterBody2D
 			if (Input.IsActionJustPressed("interact"))
 			{
 		
-				currInteractive.interactWith();
+				//currInteractive.interactWith();
+				currInteractive[0].interactWith();
+				currInteractive.RemoveAt(0);
 			}
 			
 			
@@ -79,11 +82,13 @@ public partial class test : CharacterBody2D
 	}
 	
 	public  void setInteract(InterctableAria o){
-		currInteractive = o;
+		//currInteractive = o;
+		currInteractive.Add(o);
 	}
 		public  void DeclareNotCollide(InterctableAria o){
-			if(currInteractive == o)
-				currInteractive = null;
+			//if(currInteractive == o)
+				//currInteractive = null;
+				currInteractive.Remove(o);
 	}
 	
 	

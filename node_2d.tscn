@@ -942,6 +942,21 @@ script = ExtResource("6_kdubu")
 position = Vector2(0.578305, 19.3735)
 shape = SubResource("CircleShape2D_q6r6c")
 
+[node name="Closet2" type="Node2D" parent="."]
+position = Vector2(260, 336)
+scale = Vector2(-3.66466, 3.49811)
+script = ExtResource("4_0hol4")
+
+[node name="Closet" type="Sprite2D" parent="Closet2"]
+texture = ExtResource("4_q6r6c")
+
+[node name="ClosetArea" type="Area2D" parent="Closet2"]
+script = ExtResource("6_kdubu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Closet2/ClosetArea"]
+position = Vector2(0.578305, 19.3735)
+shape = SubResource("CircleShape2D_q6r6c")
+
 [node name="Door" type="Sprite2D" parent="."]
 position = Vector2(600, 516)
 scale = Vector2(3.48, 3.48)
@@ -970,4 +985,5 @@ vertical_alignment = 1
 
 [connection signal="body_entered" from="Closet/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
 [connection signal="body_entered" from="Safe/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
+[connection signal="body_entered" from="Closet2/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
 [connection signal="body_entered" from="Door/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
