@@ -23,8 +23,8 @@ public partial class DoorArea : InterctableAria
 		//Velocity = velocity;
 		//MoveAndSlide(); // Godot 4 handles the internal velocity
 		//velocity = Velocity;
-		GD.Print("Dorr Destroyed!");
-		GetParent().QueueFree();
+		GD.Print("Door Destroyed!");
+		
 		
 	}
 }
