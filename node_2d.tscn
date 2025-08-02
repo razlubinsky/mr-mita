@@ -1,15 +1,15 @@
 [gd_scene load_steps=15 format=4 uid="uid://bjsfsdx6a333v"]
 
 [ext_resource type="Texture2D" uid="uid://vi3pwu1mpqq0" path="res://icon.svg" id="1_0e48y"]
-[ext_resource type="Script" uid="uid://dcxhbro2j4ndu" path="res://Timer.cs" id="1_ir8iy"]
-[ext_resource type="Script" uid="uid://44xwy0oqwo7d" path="res://test.cs" id="1_wtcfe"]
-[ext_resource type="Script" uid="uid://dg1wt0wfm3gtd" path="res://Interactives.cs" id="3_epypp"]
-[ext_resource type="Script" uid="uid://bqaaqvk2i36g7" path="res://Closet.cs" id="4_0hol4"]
+[ext_resource type="Script" uid="uid://dcxhbro2j4ndu" path="res://Scripts/Timer.cs" id="1_ir8iy"]
+[ext_resource type="Script" uid="uid://44xwy0oqwo7d" path="res://Scripts/test.cs" id="1_wtcfe"]
+[ext_resource type="Script" uid="uid://dg1wt0wfm3gtd" path="res://Scripts/Interactives.cs" id="3_epypp"]
+[ext_resource type="Script" uid="uid://bqaaqvk2i36g7" path="res://Scripts/Closet.cs" id="4_0hol4"]
 [ext_resource type="Texture2D" uid="uid://b4nhxn7lonp21" path="res://1.png" id="4_q6r6c"]
-[ext_resource type="Script" uid="uid://bb6uo1cwpct5g" path="res://ClosetArea.cs" id="6_kdubu"]
+[ext_resource type="Script" uid="uid://bb6uo1cwpct5g" path="res://Scripts/ClosetArea.cs" id="6_kdubu"]
 [ext_resource type="Texture2D" uid="uid://dnu1jsuh0uakw" path="res://Tile-Sets/Tile-Sets (64-64).png" id="7_d21ai"]
 [ext_resource type="Texture2D" uid="uid://dvdwngtp7u7fc" path="res://2.png" id="8_rj586"]
-[ext_resource type="Script" uid="uid://44ve4k628b6p" path="res://DoorArea.cs" id="9_4d7sh"]
+[ext_resource type="Script" uid="uid://44ve4k628b6p" path="res://Scripts/DoorArea.cs" id="9_4d7sh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdubu"]
 size = Vector2(126, 128)
