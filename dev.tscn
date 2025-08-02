@@ -1147,18 +1147,18 @@ text = "00:01:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Door" type="Node2D" parent="."]
 
-[node name="DoorArea" type="Area2D" parent="Node2D"]
+[node name="DoorArea" type="Area2D" parent="Door"]
 position = Vector2(598, 344)
 scale = Vector2(3.48, 3.48)
 script = ExtResource("6_k35xd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/DoorArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/DoorArea"]
 position = Vector2(0, 15.0862)
 shape = SubResource("RectangleShape2D_4d7sh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/DoorArea"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Door/DoorArea"]
 position = Vector2(1.29311, 16.2356)
 scale = Vector2(0.887856, 0.936902)
 sprite_frames = SubResource("SpriteFrames_gt76g")
@@ -1202,4 +1202,4 @@ animation = &"interact"
 [connection signal="body_entered" from="Closet/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
 [connection signal="body_entered" from="Safe/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
 [connection signal="body_entered" from="Closet2/ClosetArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
-[connection signal="body_entered" from="Node2D/DoorArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]
+[connection signal="body_entered" from="Door/DoorArea" to="CharacterBody2D" method="_on_closet_area_body_entered"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=54 format=4 uid="uid://4ktbni4qp3jx"]
+[gd_scene load_steps=64 format=4 uid="uid://bjsfsdx6a333v"]
 
 [ext_resource type="Texture2D" uid="uid://vi3pwu1mpqq0" path="res://icon.svg" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://dcxhbro2j4ndu" path="res://Scripts/Timer.cs" id="1_ir8iy"]
 [ext_resource type="Script" uid="uid://44xwy0oqwo7d" path="res://Scripts/Player.cs" id="1_wtcfe"]
+[ext_resource type="Script" uid="uid://ckn83qpa1qykt" path="res://Key.cs" id="2_cjlbh"]
 [ext_resource type="Texture2D" uid="uid://bj0uw8p24yygi" path="res://assets/Character-20250802T081038Z-1-001/Character/Cucumber/1-Idle/1.png" id="3_6ip5v"]
 [ext_resource type="Script" uid="uid://dg1wt0wfm3gtd" path="res://Scripts/Interactives.cs" id="3_epypp"]
 [ext_resource type="Script" uid="uid://bqaaqvk2i36g7" path="res://Scripts/Closet.cs" id="4_0hol4"]
@@ -42,6 +43,14 @@
 [ext_resource type="Texture2D" uid="uid://c2esdruky830d" path="res://assets/Character-20250802T081038Z-1-001/Character/Cucumber/2-Run/6.png" id="20_2v765"]
 [ext_resource type="Texture2D" uid="uid://b78ab1sn4c7hi" path="res://assets/Character-20250802T081038Z-1-001/Character/Cucumber/2-Run/7.png" id="21_b8fb0"]
 [ext_resource type="Texture2D" uid="uid://cnvduxfh1n5cc" path="res://assets/Character-20250802T081038Z-1-001/Character/Cucumber/2-Run/8.png" id="22_ma08v"]
+[ext_resource type="Texture2D" uid="uid://31epeu8wtinv" path="res://assets/Objects-20250802T081041Z-1-001/Objects/Key/Gold/1.png" id="43_4qosj"]
+[ext_resource type="Texture2D" uid="uid://cfoajkhb8vg5y" path="res://assets/Objects-20250802T081041Z-1-001/Objects/Key/Gold/2.png" id="44_cjlbh"]
+[ext_resource type="Texture2D" uid="uid://qqwtedefgx0l" path="res://assets/Objects-20250802T081041Z-1-001/Objects/Key/Gold/3.png" id="45_kfelt"]
+[ext_resource type="Texture2D" uid="uid://cqsmn4d3mwxnl" path="res://assets/Objects-20250802T081041Z-1-001/Objects/Key/Gold/4.png" id="46_ytlpd"]
+[ext_resource type="Texture2D" uid="uid://dwdwfg7lflciu" path="res://assets/Objects-20250802T081041Z-1-001/Objects/Key/Gold/5.png" id="47_2v765"]
+[ext_resource type="Texture2D" uid="uid://caqlcjy7petrc" path="res://assets/Objects-20250802T081041Z-1-001/Objects/Key/Gold/6.png" id="48_b8fb0"]
+[ext_resource type="Texture2D" uid="uid://d2rcb232sr2f6" path="res://assets/Objects-20250802T081041Z-1-001/Objects/Key/Gold/7.png" id="49_ma08v"]
+[ext_resource type="Texture2D" uid="uid://q546efdt6evc" path="res://assets/Objects-20250802T081041Z-1-001/Objects/Key/Gold/8.png" id="50_s32dh"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4d7sh"]
 load_path = "res://.godot/imported/Tile-Sets (64-64).png-ecead5e0f41bad324d25a25d80b512fc.ctex"
@@ -850,6 +859,38 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_4qosj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("43_4qosj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_cjlbh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_kfelt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_ytlpd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_2v765")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_b8fb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_ma08v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_s32dh")
+}],
+"loop": true,
+"name": &"Spin",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ip5v"]
 radius = 8.8211
 
@@ -1072,20 +1113,27 @@ position = Vector2(17.1196, 44.2935)
 sprite_frames = SubResource("SpriteFrames_3ngjr")
 animation = &"interact"
 
+[node name="Key" type="Node2D" parent="Objects"]
+position = Vector2(-368, 497)
+scale = Vector2(5, 5)
+script = ExtResource("2_cjlbh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objects/Key"]
+sprite_frames = SubResource("SpriteFrames_4qosj")
+animation = &"Spin"
+
 [node name="Box2" type="Node2D" parent="Objects"]
-position = Vector2(-456, 184)
+position = Vector2(-369, 491)
 scale = Vector2(7, 7)
 
 [node name="BoxArea" type="Area2D" parent="Objects/Box2"]
 script = ExtResource("16_7mj2a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Box2/BoxArea"]
-position = Vector2(17.1116, 44.2514)
 scale = Vector2(1.30594, 0.850817)
 shape = SubResource("RectangleShape2D_xfyss")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objects/Box2/BoxArea"]
-position = Vector2(17.1196, 44.2935)
 sprite_frames = SubResource("SpriteFrames_3ngjr")
 animation = &"interact"
 

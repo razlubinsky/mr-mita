@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 public partial class BoxArea : InterctableAria
 {
-
+	[Export] public bool isCorrectdwaawdsawddw;
 	private AnimatedSprite2D _animatedSprite;
 
 	
