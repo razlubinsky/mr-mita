@@ -15,6 +15,10 @@ run/main_scene="res://node_2d.tscn"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MusicManager="*res://Music/MusicManager.tscn"
+
 [dotnet]
 
 project/assembly_name="Marmita"
