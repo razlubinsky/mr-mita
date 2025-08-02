@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 public partial class BoxArea : InterctableAria
 {
-	[Export] public bool isCorrectdwaawdsawddw;
+	[Export] public bool isCorrectBox;
 	private AnimatedSprite2D _animatedSprite;
 
 	
@@ -24,9 +24,7 @@ public partial class BoxArea : InterctableAria
 
 	public override  void interactWith()
 	{
-	
 		DerstroyBox();
-		
 	}
 	
 	private async void DerstroyBox(){

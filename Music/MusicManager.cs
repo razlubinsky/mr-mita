@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class MusicManager : Node
+public partial class MusicManager : Node2D
 {
 	private static MusicManager _instance;
 

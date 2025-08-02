@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://4ktbni4qp3jx"]
+[gd_scene load_steps=66 format=4 uid="uid://bjsfsdx6a333v"]
 
 [ext_resource type="Texture2D" uid="uid://vi3pwu1mpqq0" path="res://icon.svg" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://dcxhbro2j4ndu" path="res://Scripts/Timer.cs" id="1_ir8iy"]
@@ -51,6 +51,7 @@
 [ext_resource type="Texture2D" uid="uid://caqlcjy7petrc" path="res://assets/Objects-20250802T081041Z-1-001/Objects/Key/Gold/6.png" id="48_b8fb0"]
 [ext_resource type="Texture2D" uid="uid://d2rcb232sr2f6" path="res://assets/Objects-20250802T081041Z-1-001/Objects/Key/Gold/7.png" id="49_ma08v"]
 [ext_resource type="Texture2D" uid="uid://q546efdt6evc" path="res://assets/Objects-20250802T081041Z-1-001/Objects/Key/Gold/8.png" id="50_s32dh"]
+[ext_resource type="Script" uid="uid://dpt7mxj07x8gf" path="res://OpenDoorManager.cs" id="52_kfelt"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4d7sh"]
 load_path = "res://.godot/imported/Tile-Sets (64-64).png-ecead5e0f41bad324d25a25d80b512fc.ctex"
@@ -859,6 +860,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfelt"]
+size = Vector2(10, 15.6)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4qosj"]
 animations = [{
 "frames": [{
@@ -1116,18 +1120,28 @@ animation = &"interact"
 [node name="Key" type="Node2D" parent="Objects"]
 position = Vector2(-368, 497)
 scale = Vector2(5, 5)
+
+[node name="Area2D" type="Area2D" parent="Objects/Key"]
+scale = Vector2(1, 1)
 script = ExtResource("2_cjlbh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objects/Key"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Key/Area2D"]
+position = Vector2(-0.199997, -0.199997)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_kfelt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Objects/Key/Area2D"]
+scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_4qosj")
 animation = &"Spin"
 
 [node name="Box2" type="Node2D" parent="Objects"]
-position = Vector2(-369, 491)
+position = Vector2(-689, 456)
 scale = Vector2(7, 7)
 
 [node name="BoxArea" type="Area2D" parent="Objects/Box2"]
 script = ExtResource("16_7mj2a")
+isCorrectBox = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Box2/BoxArea"]
 scale = Vector2(1.30594, 0.850817)
@@ -1177,6 +1191,9 @@ limit_left = -500
 limit_right = 2500
 limit_bottom = 650
 editor_draw_limits = true
+
+[node name="OpenDoorManager" type="Node2D" parent="."]
+script = ExtResource("52_kfelt")
 
 [connection signal="body_entered" from="Objects/Closet/ClosetArea" to="Objects/CharacterBody2D" method="_on_closet_area_body_entered"]
 [connection signal="body_entered" from="Objects/Safe/ClosetArea" to="Objects/CharacterBody2D" method="_on_closet_area_body_entered"]
